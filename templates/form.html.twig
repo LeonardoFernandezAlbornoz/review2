@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="form">
+		{{ form_start(form) }}
+		<div class="m-3">
+			{{form_label(form.description, "Description:")}}
+			{{form_widget(form.description, {'attr': {'class': 'form-control'}})}}
+		</div>
+		<div class="m-3">
+			{{form_label(form.idCategory, "Category:") }}
+			{{form_widget(form.idCategory, {'attr': {'class': 'form-control'}}) }}
+		</div>
+		<div class="m-3">
+			{{form_label(form.createdAt, "Date:") }}
+			{{form_widget(form.createdAt, {'attr': {'class': 'form-control'}})}}
+		</div>
+		{{ form_end(form) }}
+		<a href="{{path('app_list')}}" class="btn btn-primary">&lt; Go Back</a>
+	</div>
+
+{% endblock %}

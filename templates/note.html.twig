@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Note |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="{{asset('img/')}}{{img}}" class="img-fluid w-50" alt=" img">
+				<p>
+					<b>Description:</b>
+					{{ note.description }}
+				</p>
+				<p>
+					<b>Created at:</b>
+					{{ note.createdAt|date("d-m-Y") }}
+					<span>
+						{{ prettyDate }}
+					</span>
+				</p>
+				<p>
+					<b>Category:</b>
+					{{note.idCategory.description}}
+				</p>
+				<a href="{{path('app_list')}}" class="btn btn-primary">&lt; Go Back</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

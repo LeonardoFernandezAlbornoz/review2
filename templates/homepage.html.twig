@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	List |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes("success") %}
+		<div class="alert alert-success">{{ message }}</div>
+	{% endfor %}
+	<div class="container">
+		<div class="row">
+			{% for note in notes %}
+				<div class="col-md-6">
+					<div class="card mb-3">
+						<div class="card-body">
+							<h5 class="card-title">Description:</h5>
+							<p class="card-text">{{ note.description }}</p>
+							<h5 class="card-title">Category:</h5>
+							<p class="card-text">{{ note.idCategory.description }}</p>
+							<h5 class="card-title">Date:</h5>
+							<p class="card-text">{{ note.createdAt|date("d-m-Y H:i:s") }}</p>
+							<a href="{{path('app_detail',{slug: note.id})}}" class="btn btn-primary">More</a>
+							<a href="{{path('app_delete',{slug: note.id})}}" class="btn btn-danger">Delete</a>
+							<a href="{{path("app_update",{slug: note.id})}}" class="btn btn-warning">Update</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<a href="{{path("app_add")}}" class="btn btn-lg btn-success position-fixed bottom-0 end-0 me-5 mb-5">Add</a>
+
+{% endblock %}
